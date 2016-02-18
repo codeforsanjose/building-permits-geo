@@ -1,7 +1,7 @@
 # building-permits-geo
 Geographical visualization of San Jose building permits
 
-# Getting Started
+### Getting Started
 
 ```bash
 # Download the building permits data from the San Jose building permits website
