@@ -29,6 +29,5 @@ def run():
             label = file_name.strip(".txt")
             permits_for_file = convert_to_dicts(label)
             permits[label] = permits_for_file
-            return permits
             
     return permits
