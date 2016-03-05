@@ -4,7 +4,7 @@ import requests
 from itertools import product
 
 # Data source URL template from the San Jose online permits site
-URL_TEMPLATE = "https://www.sjpermits.org/permits/ftproot/SanJose/permitdataYears/%s"
+URL_TEMPLATE = "http://www.sjpermits.org/permits/ftproot/SanJose/permitdataYears/%s"
 PERMIT_TEMPLATE = "PD_%d_%s.txt"
 
 # Years of permit data to download 
