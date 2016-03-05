@@ -1,6 +1,7 @@
 import os
 import csv
 import json
+import six
 
 TSV_FOLDER = "../data/tsv/"
 FIELDNAMES = ("tract", "apn", "issue_date", "final_date", "lot", "permit_number", "owner",
@@ -8,14 +9,16 @@ FIELDNAMES = ("tract", "apn", "issue_date", "final_date", "lot", "permit_number"
               "sub_code_description", "work_code", "work_code_description", "census_code",
               "permit_valuation", "reroof_valuation", "square_feet", "units", "rsn", "pool",
               "sewer", "enterprise", "permit_flag")
+
 def clean_and_annotate(row, label):
    title = label.split('_')
    row["year"] = title[1]
    row["type"] = title[2]
-   return row   
+   row = { k: (v.strip() if isinstance(v, six.string_types) else v) for k, v in row.items()}
+   return row
 
 def convert_to_dicts(label):
-    with open(TSV_FOLDER + label + '.txt', 'rU') as tsv_input:
+    with open(TSV_FOLDER + label + '.txt', 'rU', errors='ignore') as tsv_input:
         tsv_reader = csv.DictReader(tsv_input, fieldnames=FIELDNAMES, delimiter='\t')
         # Skip the first line of the CSV file, which contains the headers
         next(tsv_reader)
