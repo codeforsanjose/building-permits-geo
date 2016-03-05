@@ -1,1 +1,3 @@
 data/tsv/*.txt
+data/json/*.json
+*.pyc
